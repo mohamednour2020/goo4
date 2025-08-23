@@ -1,5 +1,6 @@
 
 import 'package:flutter/material.dart';
+import 'package:goo4/presentation/screens/cart_screen.dart';
 
 class MyHomePage extends StatefulWidget {
   const MyHomePage({super.key});
@@ -40,15 +41,21 @@ class _MyHomePageState extends State<MyHomePage> {
         child: GridView.builder(
           itemCount: 18,
           itemBuilder: (context, index) {
-            return Container(
-              height: 100,
-              decoration: BoxDecoration(
-                color: Colors.cyan,
-                image: DecorationImage(fit: BoxFit.cover,
-                    image: AssetImage("assets/images/noFlag.png")),
-                borderRadius: BorderRadius.circular(10),
+            return InkWell(
+              onTap: (){
+                Navigator.push(context, MaterialPageRoute(builder: (builder)=>
+                    CartScreen(imagePath: 'assets/images/noFlag.png',)));
+              },
+              child: Container(
+                height: 100,
+                decoration: BoxDecoration(
+                  color: Colors.cyan,
+                  image: DecorationImage(fit: BoxFit.cover,
+                      image: AssetImage("assets/images/noFlag.png")),
+                  borderRadius: BorderRadius.circular(10),
+                ),
+                child: Column(children: []),
               ),
-              child: Column(children: []),
             );
           },
 
