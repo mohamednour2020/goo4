@@ -3,7 +3,7 @@ import 'dart:developer';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:goo4/presentation/custom_widgets/custom_button.dart';
-import 'package:goo4/presentation/screens/home_screen.dart';
+import 'package:goo4/presentation/screens/popular_people_screen.dart';
 
 class LoginScreen extends StatelessWidget {
   const LoginScreen({super.key});
@@ -89,7 +89,7 @@ class LoginScreen extends StatelessWidget {
               CustomButton(onTap: () {
                 if (loginFormKey.currentState!.validate()) {
                   Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder:
-                      (builder)=>MyHomePage()), (f){
+                      (builder)=>PopularPeopleScreen()), (f){
                     return false;
                   });
                 }
