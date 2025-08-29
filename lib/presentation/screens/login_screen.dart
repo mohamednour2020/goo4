@@ -1,6 +1,7 @@
 import 'dart:developer';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:goo4/presentation/custom_widgets/custom_button.dart';
 import 'package:goo4/presentation/screens/home_screen.dart';
 
@@ -25,7 +26,7 @@ class LoginScreen extends StatelessWidget {
         padding: const EdgeInsets.all(16),
         child: Form(
           key: loginFormKey,
-          child: ListView(
+          child: Column(
             children: [
               TextFormField(
                 autovalidateMode: AutovalidateMode.onUserInteraction,
@@ -53,7 +54,7 @@ class LoginScreen extends StatelessWidget {
 
                 ),
               ),
-              SizedBox(height: 16),
+              SizedBox(height: 16.h),
               TextFormField(
                 obscureText: true,
                 autovalidateMode: AutovalidateMode.onUserInteraction,
@@ -84,7 +85,7 @@ class LoginScreen extends StatelessWidget {
 
                 ),
               ),
-              SizedBox(height: 32),
+              SizedBox(height: 32.h),
               CustomButton(onTap: () {
                 if (loginFormKey.currentState!.validate()) {
                   Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder:

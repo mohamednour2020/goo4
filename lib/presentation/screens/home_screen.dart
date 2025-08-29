@@ -38,33 +38,20 @@ class _MyHomePageState extends State<MyHomePage> {
 
       body: Padding(
         padding: const EdgeInsets.all(8.0),
-        child: GridView.builder(
-          itemCount: 18,
-          itemBuilder: (context, index) {
-            return InkWell(
-              onTap: (){
-                Navigator.push(context, MaterialPageRoute(builder: (builder)=>
-                    CartScreen(imagePath: 'assets/images/noFlag.png',)));
-              },
-              child: Container(
-                height: 100,
-                decoration: BoxDecoration(
-                  color: Colors.cyan,
-                  image: DecorationImage(fit: BoxFit.cover,
-                      image: AssetImage("assets/images/noFlag.png")),
-                  borderRadius: BorderRadius.circular(10),
-                ),
-                child: Column(children: []),
+        child: ListView(
+          children: [
+            Container(
+              height: MediaQuery.of(context).size.height,
+              width: double.infinity,
+              decoration: BoxDecoration(
+                color: Colors.cyan,
+                image: DecorationImage(fit: BoxFit.cover,
+                    image: AssetImage("assets/images/noFlag.png")),
+                borderRadius: BorderRadius.circular(10),
               ),
-            );
-          },
-
-          gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-              crossAxisCount:2,
-              mainAxisSpacing: 16,
-              crossAxisSpacing: 16
-
-          ),
+              child: Column(children: []),
+            ),
+          ],
         ),
       ),
       floatingActionButton: FloatingActionButton(

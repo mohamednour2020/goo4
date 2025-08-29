@@ -14,6 +14,7 @@ class CartScreen extends StatelessWidget {
         actions: [
           IconButton(
             onPressed: () {
+
               Navigator.pushReplacement(
                 context,
                 MaterialPageRoute(builder: (builder) => ProfileScreen()),
