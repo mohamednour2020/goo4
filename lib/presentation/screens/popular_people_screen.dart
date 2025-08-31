@@ -4,6 +4,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:goo4/data/cubits/popular_cubit/popular_cubit.dart';
 import 'package:goo4/data/requests/popular_request.dart';
 import 'package:goo4/domain/models/popular_model.dart';
+import 'package:goo4/presentation/screens/details_screen.dart';
 
 class PopularPeopleScreen extends StatefulWidget {
   const PopularPeopleScreen({super.key});
@@ -35,28 +36,47 @@ class _PopularPeopleScreenState extends State<PopularPeopleScreen> {
                 : state is PopularError
                 ? SizedBox()
                 : ListView.separated(
-                    itemBuilder: (context, index) {
-                      return Container(
-                        height: 150.h,
-                        decoration: BoxDecoration(
-                          color: Colors.teal,
-                          borderRadius: BorderRadius.circular(20.r),
-                        ),
-                        child: Center(
-                          child: Text(
-                            PopularCubit.get(
-                                  context,
-                                ).popularModel?.results?[index].name ??
-                                "no name",
-                          ),
-                        ),
-                      );
-                    },
-                    separatorBuilder: (context, index) {
-                      return SizedBox(height: 16);
-                    },
-                    itemCount: PopularCubit.get(context).popularModel!.results!.length,
-                  );
+              itemBuilder: (context, index) {
+                return InkWell(
+                  onTap: () {
+                    Navigator.push(context,
+                        MaterialPageRoute(builder: (builder) =>
+                            DetailsScreen(id: PopularCubit
+                                .get(
+                              context,
+                            )
+                                .popularModel
+                                ?.results?[index].id)));
+                  },
+                  child: Container(
+                    height: 150.h,
+                    decoration: BoxDecoration(
+                      color: Colors.teal,
+                      borderRadius: BorderRadius.circular(20.r),
+                    ),
+                    child: Center(
+                      child: Text(
+                        PopularCubit
+                            .get(
+                          context,
+                        )
+                            .popularModel
+                            ?.results?[index].name ??
+                            "no name",
+                      ),
+                    ),
+                  ),
+                );
+              },
+              separatorBuilder: (context, index) {
+                return SizedBox(height: 16);
+              },
+              itemCount: PopularCubit
+                  .get(context)
+                  .popularModel!
+                  .results!
+                  .length,
+            );
           },
         ),
       ),

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:goo4/data/cubits/details_cubit/details_cubit.dart';
 import 'package:goo4/data/cubits/popular_cubit/popular_cubit.dart';
 import 'presentation/screens/login_screen.dart';
 import 'presentation/screens/popular_people_screen.dart';
@@ -16,8 +17,15 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (context) => PopularCubit(),
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider(
+          create: (context) => PopularCubit(),
+        ),
+        BlocProvider(
+          create: (context) => DetailsCubit(),
+        ),
+      ],
       child: ScreenUtilInit(
         designSize: const Size(375, 812),
         minTextAdapt: true,
